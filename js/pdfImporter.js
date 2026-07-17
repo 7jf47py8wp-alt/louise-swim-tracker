@@ -75,7 +75,8 @@ text += content.items
 }
 
 
-console.log("PDF TEKST:", text);
+document.getElementById("pdfResult").innerHTML =
+"<pre>" + text + "</pre>";
 
 let competition =
 parseCompetitionText(
