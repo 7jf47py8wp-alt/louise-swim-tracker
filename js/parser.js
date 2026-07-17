@@ -1,4 +1,4 @@
-function parseCompetitionText(text) {
+function parseCompetitionText(text, swimmer) {
 
 
     let competition = {
@@ -6,16 +6,36 @@ function parseCompetitionText(text) {
         naam: "Onbekende wedstrijd",
         datum: "",
         zwembad: "",
+        gevonden: false,
         races: []
 
     };
 
 
+    let upperText = text.toUpperCase();
+
+
+
     // -------------------------
-    // Wedstrijdnaam herkennen
+    // Zoek Louise
     // -------------------------
 
-    let lines = text.split("\n");
+    if(
+        upperText.includes(swimmer.searchName)
+    ){
+
+        competition.gevonden = true;
+
+    }
+
+
+
+    // -------------------------
+    // Wedstrijdnaam
+    // -------------------------
+
+    let lines =
+    text.split("\n");
 
 
     for(let line of lines){
@@ -38,7 +58,7 @@ function parseCompetitionText(text) {
 
 
     // -------------------------
-    // Datum herkennen
+    // Datum
     // -------------------------
 
     let dateMatch =
@@ -56,9 +76,8 @@ function parseCompetitionText(text) {
 
 
 
-
     // -------------------------
-    // Zwembad herkennen
+    // Zwembad
     // -------------------------
 
     if(
@@ -78,9 +97,8 @@ function parseCompetitionText(text) {
 
 
 
-
     // -------------------------
-    // Disciplines herkennen
+    // Disciplines
     // -------------------------
 
     let disciplines = [
@@ -95,12 +113,12 @@ function parseCompetitionText(text) {
 
 
 
-    for(let d of disciplines){
+    for(let discipline of disciplines){
 
 
         let regex =
         new RegExp(
-        "(\\d+)m\\s+"+d,
+        "(\\d+)m\\s+"+discipline,
         "gi"
         );
 
@@ -132,7 +150,6 @@ function parseCompetitionText(text) {
 
 
     }
-
 
 
     return competition;
