@@ -42,9 +42,42 @@ text += content.items
 }
 
 
+let competition =
+parseCompetitionText(text);
+
+
 document.getElementById("pdfResult")
 .innerHTML =
-"<pre>"+text+"</pre>";
+
+`
+
+<h3>${competition.naam}</h3>
+
+<p>
+Datum: ${competition.datum}
+</p>
+
+<p>
+Zwembad: ${competition.zwembad}
+</p>
+
+<h4>Programma:</h4>
+
+<ul>
+
+${competition.races.map(r=>
+`
+<li>
+${r.discipline}
+</li>
+`
+).join("")}
+
+</ul>
+
+`;
+
+console.log(competition);
 
 
 }
