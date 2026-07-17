@@ -2,240 +2,127 @@
 <html lang="nl">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louise Swim Tracker</title>
 
-<title>Louise Swim Tracker</title>
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-
-<!-- PDF.js bibliotheek -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
-
 
 <body>
 
-
 <header>
-
-<h1>🏊 Louise Swim Tracker</h1>
-
-<p>Persoonlijk wedstrijddashboard</p>
-
+    <h1>🏊 Louise Swim Tracker</h1>
+    <p>Persoonlijk wedstrijddashboard</p>
 </header>
-
-
 
 <section class="dashboard">
 
+    <div class="card">
+        <h2>🏆 Wedstrijden</h2>
+        <p id="raceCount">0</p>
+    </div>
 
-<div class="card">
+    <div class="card">
+        <h2>🏊 Races</h2>
+        <p id="performanceCount">0</p>
+    </div>
 
-<h2>🏆 Wedstrijden</h2>
-
-<p id="raceCount">
-0
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>🏊 Races</h2>
-
-<p id="performanceCount">
-0
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>⭐ Persoonlijke Records</h2>
-
-<p id="pbCount">
-0
-</p>
-
-</div>
-
+    <div class="card">
+        <h2>⭐ Persoonlijke Records</h2>
+        <p id="pbCount">0</p>
+    </div>
 
 </section>
-
-
-
-
 
 <section class="card">
 
+    <h2>📄 Wedstrijdprogramma importeren</h2>
 
-<h2>📅 Wedstrijdprogramma importeren</h2>
+    <p>Selecteer een PDF met het officiële wedstrijdprogramma.</p>
 
+    <input
+        type="file"
+        id="pdfUpload"
+        accept="application/pdf">
 
-<p>
-Upload het officiële wedstrijdprogramma als PDF.
-</p>
+    <br><br>
 
+    <button onclick="importPDF()">
+        📄 Lees PDF
+    </button>
 
-<input 
-type="file"
-id="pdfUpload"
-accept="application/pdf">
+    <hr>
 
+    <div id="pdfResult">
 
+        <p>Nog geen PDF geïmporteerd.</p>
 
-<button onclick="importPDF()">
-
-📄 Lees PDF
-
-</button>
-
-
-<div id="pdfResult">
-
-</div>
-
+    </div>
 
 </section>
-
-
-
-
-
 
 <section class="card">
 
+    <h2>➕ Nieuwe race toevoegen</h2>
 
-<h2>
-➕ Nieuwe race toevoegen
-</h2>
+    <label>Wedstrijd</label>
 
+    <input
+        id="eventName"
+        placeholder="bv. Provinciaal Kampioenschap">
 
-<label>
-Wedstrijd
-</label>
+    <label>Datum</label>
 
+    <input
+        id="date"
+        type="date">
 
-<input 
-id="eventName"
-placeholder="bv. Provinciaal Kampioenschap">
+    <label>Discipline</label>
 
+    <input
+        id="stroke"
+        placeholder="bv. 50m vrije slag">
 
+    <label>Tijd</label>
 
-<label>
-Datum
-</label>
+    <input
+        id="time"
+        placeholder="bv. 32.45">
 
-
-<input 
-id="date"
-type="date">
-
-
-
-<label>
-Discipline
-</label>
-
-
-<input 
-id="stroke"
-placeholder="bv. 50m vrije slag">
-
-
-
-<label>
-Tijd
-</label>
-
-
-<input 
-id="time"
-placeholder="bv. 32.45">
-
-
-
-<button onclick="addRace()">
-
-Toevoegen
-
-</button>
-
+    <button onclick="addRace()">
+        ➕ Toevoegen
+    </button>
 
 </section>
-
-
-
-
-
-
 
 <section class="card">
 
+    <h2>📊 Race Historiek</h2>
 
-<h2>
-📊 Race Historiek
-</h2>
+    <table>
 
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Discipline</th>
+                <th>Tijd</th>
+                <th>PB</th>
+            </tr>
+        </thead>
 
+        <tbody id="raceTable">
+        </tbody>
 
-<table>
-
-
-<thead>
-
-<tr>
-
-<th>
-Datum
-</th>
-
-
-<th>
-Discipline
-</th>
-
-
-<th>
-Tijd
-</th>
-
-
-<th>
-PB
-</th>
-
-
-</tr>
-
-</thead>
-
-
-
-<tbody id="raceTable">
-
-
-</tbody>
-
-
-
-</table>
-
+    </table>
 
 </section>
 
-
-
-
-
-
+<!-- JavaScript -->
 
 <script src="app.js"></script>
 <script src="js/parser.js"></script>
@@ -243,4 +130,3 @@ PB
 
 </body>
 </html>
-
