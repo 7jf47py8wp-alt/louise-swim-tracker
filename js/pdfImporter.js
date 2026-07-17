@@ -75,7 +75,7 @@ text += content.items
 }
 
 
-
+console.log("PDF TEKST:", text);
 
 let competition =
 parseCompetitionText(
